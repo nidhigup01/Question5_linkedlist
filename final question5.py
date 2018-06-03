@@ -79,6 +79,6 @@ ll.append(n3)
 ll.append(n4)
 ll.append(n5)
 
-print (ll.get_position(1).value)
+print (ll.get_position(1).data)
 
-#ll.length_list_till_m(4)
+ll.length_list_till_m(4)
