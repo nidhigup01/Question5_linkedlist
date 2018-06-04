@@ -19,66 +19,54 @@ class Node(object):
         self.data = data
         self.next = None
 
-class LinkedList(object):
-    def __init__(self, head=None):
-        self.head = head
 
-    def append(self, new_element):
-        current = self.head
-        if self.head:
-            while current.next:
-                current = current.next
-            current.next = new_element
-        else:
-            self.head = new_element
-            
-    def get_position(self, position):
+  
+
+def length_list(ll):
+        current = ll
+        total_length = 1
+        while current.next:
+            total_length += 1
+            current = current.next
+        return total_length
+        
+  
+def question5(ll, m):
         counter = 1
-        current = self.head
+        current = ll
+        total_length = length_list(ll)
+        print ('total_length', total_length)
+        position = total_length + 1 - m
+        print ('position', position)
         if position < 1:
             return None
         while current and counter <= position:
             if counter == position:
-                return current
+                return current.data
             current = current.next
             counter += 1
-        return None
-  
-
-    def length_list_till_m(self, position):
-        current = self.head
-        total_length = 0
-        counter = 1
-        if position < 1:
-            return None
-        while current.next and counter < position:
-            total_length += 1
-            counter += 1
-            current = current.next
-        print('total_length_till {} is {}, counter{}'.format(position, total_length, counter))
-        return total_length, counter
-    
-  
+        return None             
                 
-                
-                
+               
                 
 # Test cases
 # Set up some Elements
-n1 = Node(1)
-n2 = Node(2)
-n3 = Node(3)
-n4 = Node(4)
-n5 = Node(5)
+n1 = Node(10)
+n2 = Node(20)
+n3 = Node(30)
+n4 = Node(40)
+n5 = Node(50)
+#n6 = Node(6)
 
 # Start setting up a LinkedList
-ll = LinkedList(n1)
-ll.append(n2)
-ll.append(n3)
-ll.append(n3)
-ll.append(n4)
-ll.append(n5)
+n1.next = n2
+n2.next = n3
+n3.next = n4
+n4.next = n5
 
-print (ll.get_position(1).data)
+# Test cases:
 
-ll.length_list_till_m(4)
+print('Data value of node at 3rd position from end: ', question5(n1, 3))
+print('Data value after the end of linked list:', question5(n1, 0))
+print('Data value before the first element of linked list:', question5(n1, 6))
+
